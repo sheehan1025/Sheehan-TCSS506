@@ -3,5 +3,5 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN pip3 install --upgrade pip
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-#COPY app.py /usr/local/bin/app.py
-#CMD app.py
+COPY flask-project /usr/local/bin/flask-project
+CMD /usr/local/bin/flask-project/app.py

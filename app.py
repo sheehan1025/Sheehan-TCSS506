@@ -39,9 +39,9 @@ def authHandler():
 @app.before_first_request
 def create_table():
     db.create_all()
-    user = UserModel.query.filter_by(email = 'lhhung@uw.edu' ).first()
+    user = UserModel.query.filter_by(email = 'sheehs@uw.edu' ).first()
     if user is None:
-        addUser("lhhung@uw.edu","qwerty")
+        addUser("sheehs@uw.edu","qwerty")
     else:
         logout_user()
 
@@ -54,7 +54,7 @@ def showBusiness():
         session['city']=request.args.get('city')
     if 'term' not in session:
         session['term'] = 'coffee shop'
-    if request.method is 'POST' and searchForm.validate_on_submit != 0:
+    if request.method == 'POST' and searchForm.validate_on_submit():
         session['term'] = searchForm.searchTerm.data
     if 'city' in session:
         return render_template('home.html', myData=findBusiness(city=session['city'], term=session['term']), searchForm=searchForm)

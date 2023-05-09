@@ -7,4 +7,4 @@ class LoginForm(FlaskForm):
     password = PasswordField('password', validators=[DataRequired(), Length(min=5, max=50)])
 
 class SearchForm(FlaskForm):
-    searchTerm = StringField('searchTerm', validators=[DataRequired(), Length < 50])
+    searchTerm = StringField('searchTerm', validators=[DataRequired(), Length(min=1, max=50)])
